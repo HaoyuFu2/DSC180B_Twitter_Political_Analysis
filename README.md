@@ -20,6 +20,7 @@ DSC180B_Twitter_Political_Analysis/
 │   ├── gss.parquet                             # cleaned dataset 3
 │   └── validation.parquet                      # validation dataset (manually labeled)
 ├── data_cleaning.py                            # data cleaning module
+├── tweets_prediction.py                        # tweets prediction module
 ├── paper_replication.py                        # paper replication module
 └── demo.ipynb          # Jupyter notebook for demonstrating the progress so far
 ```
