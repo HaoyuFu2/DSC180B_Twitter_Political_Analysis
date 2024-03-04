@@ -22,7 +22,7 @@ torch.manual_seed(42)
 tqdm.pandas()
 
 # load data
-df = pd.read_parquet('data/validation.parquet')
+df = pd.read_parquet('data/labels.parquet')
 
 # encode labels
 le = LabelEncoder()
