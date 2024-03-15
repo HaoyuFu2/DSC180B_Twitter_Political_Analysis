@@ -3,9 +3,9 @@
 ## Team Members: Yixuan Zhang, Haoyu Fu
 
 ## Content
-The progress so far includes:
+The content includes:
 1. Replication of the paper [AI-Augmented Surveys: Leveraging Large Language Models and Surveys for Opinion Prediction](https://arxiv.org/pdf/2305.09620.pdf) on a subset of the dataset used by the paper, using the GPT2 language model.
-2. Model that predicts the candidate trends of the Twitter data using similiar methods as the paper.
+2. Code that predicts the political positions of Twitter users given their history tweets. This approach was inspired by the framework from the paper.
 
 ## Files
 
