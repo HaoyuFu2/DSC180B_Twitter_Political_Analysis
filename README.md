@@ -7,7 +7,7 @@ The content includes:
 1. Replication of the paper [AI-Augmented Surveys: Leveraging Large Language Models and Surveys for Opinion Prediction](https://arxiv.org/pdf/2305.09620.pdf) on a subset of the dataset used by the paper, using the GPT2 language model.
 2. Code that predicts the political positions of Twitter users given their history tweets. This approach was inspired by the framework from the paper.
 
-For detailed explanation of our code, please read our report.
+For detailed explanation of our code, please [check our website](https://haoyufu2.github.io/Twitter_Analysis_Website/) or read our report.
 
 ## Files and explanations
 
