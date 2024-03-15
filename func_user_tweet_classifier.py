@@ -11,7 +11,7 @@ from sklearn.preprocessing import LabelEncoder
 warnings.filterwarnings('ignore')
 
 
-def load_and_merge_data(labels_file, tweets_file):
+def load_and_merge_data(labels_file, tweets_file): #-- Checked
     """
     Load tweet data and labels from specified CSV files and merge them on user_id.
     
@@ -33,7 +33,7 @@ def load_and_merge_data(labels_file, tweets_file):
             ).reset_index(drop=True)
 
 
-def split_dataset(df, test_size=0.2, random_state=42):
+def split_dataset(df, test_size=0.8, random_state=42): #-- Checked
     """
     Split the dataset into training and testing sets.
     
@@ -50,19 +50,19 @@ def split_dataset(df, test_size=0.2, random_state=42):
     Y = df[[
         'label',
         'subjectivity',
-        'sentiment',
-        'binary_strong_negation',
-        'binary_excessive_marks',
-        'binary_topic_diversity',
+#         'sentiment',
+#         'binary_strong_negation',
+#         'binary_excessive_marks',
+#         'binary_topic_diversity',
         ]]
     return train_test_split(X, Y, test_size=test_size,
                             random_state=random_state)
 
 
-def vectorize_text(
+def vectorize_text( #-- Checked
     X_train,
     X_test,
-    max_features=1000,
+    max_features=5000,
     min_df=5,
     max_df=0.8,
     ):
@@ -106,7 +106,7 @@ def reduce_dimensions(X_train_tfidf, X_test_tfidf, n_components=300):
     return (X_train_reduced, X_test_reduced, svd)
 
 
-def train_and_predict(X_train, Y_train, X_test):
+def train_and_predict(X_train_reduced, Y_train, X_test_reduced):
     """
     Train a multi-output logistic regression model and predict the testing set.
     
@@ -119,9 +119,9 @@ def train_and_predict(X_train, Y_train, X_test):
         tuple: Trained model and predictions for the testing set.
     """
 
-    model = MultiOutputClassifier(LogisticRegression(max_iter=1000))
-    model.fit(X_train, Y_train)
-    return (model, model.predict(X_test))
+    model = MultiOutputClassifier(LogisticRegression(max_iter=10000))
+    model.fit(X_train_reduced, Y_train)
+    return (model, model.predict(X_test_reduced))
 
 
 def evaluate_predictions(Y_test, Y_pred):
@@ -143,7 +143,7 @@ def predict_new_data(
     vectorizer,
     svd,
     model,
-    label_columns,
+    label_columns = ['label', 'subjectivity'],
     ):
     """
     Predict new data using the provided model, vectorizer, and SVD transformer.
@@ -172,21 +172,20 @@ def predict_new_data(
     return new_tweets_df
 
 
-def convert_labels(df, label_columns):
+def convert_labels(df, label_columns): #-- Checked
     """
-    Convert string labels in the DataFrame to numeric labels.
+    Convert string labels in the DataFrame to numeric labels, 
+    with special handling for labels 'b' and 't' which are converted 
+    to 1 and -1 respectively.
     
     Args:
         df (pd.DataFrame): The DataFrame with labels to convert.
         label_columns (list): List of columns in df that contain labels to be converted.
         
     Returns:
-        tuple: Updated DataFrame with numeric labels and a dictionary of encoders.
+        tuple: Updated DataFrame with numeric labels.
     """
 
-    encoders = {}
-    for column in label_columns:
-        le = LabelEncoder()
-        df[column] = le.fit_transform(df[column].astype(str))
-        encoders[column] = le
-    return (df, encoders)
+    df[label_columns] = df[label_columns].replace({'b': 1, 't': -1})
+        
+    return df

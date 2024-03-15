@@ -55,8 +55,8 @@ def binary_sentiment_subjectivity(df, sentiment_threshold=0.1,
                                  ].apply(calculate_sentiment)
     df['subjectivity'] = df['sentiment_details'].apply(lambda x: \
             (1 if x['subjectivity'] > subjectivity_threshold else -1))
-    df['sentiment'] = df['sentiment_details'].apply(lambda x: \
-            (1 if x['polarity'] > sentiment_threshold else -1))
+#     df['sentiment'] = df['sentiment_details'].apply(lambda x: \
+#             (1 if x['polarity'] > sentiment_threshold else -1))
     del df['sentiment_details']
 
     return df
@@ -150,9 +150,9 @@ def preprocess_data(labels_file, tweets_file, output_file):
 
     df = load_data(labels_file, tweets_file)[['user_id', 'all_tweets']]
     df = binary_sentiment_subjectivity(df)
-    df['binary_strong_negation'] = df['all_tweets'].apply(binary_strong_negation)
-    df['binary_excessive_marks'] = df['all_tweets'].apply(binary_excessive_marks)
-    df['binary_topic_diversity'] = df['all_tweets'].apply(binary_topic_diversity)
+#     df['binary_strong_negation'] = df['all_tweets'].apply(binary_strong_negation)
+#     df['binary_excessive_marks'] = df['all_tweets'].apply(binary_excessive_marks)
+#     df['binary_topic_diversity'] = df['all_tweets'].apply(binary_topic_diversity)
     df = df.drop(columns=['all_tweets'])
 
     label_data = pd.read_csv(labels_file)[['user_id', 'label']]
