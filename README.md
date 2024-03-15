@@ -7,7 +7,7 @@ The content includes:
 1. Replication of the paper [AI-Augmented Surveys: Leveraging Large Language Models and Surveys for Opinion Prediction](https://arxiv.org/pdf/2305.09620.pdf) on a subset of the dataset used by the paper, using the GPT2 language model.
 2. Code that predicts the political positions of Twitter users given their history tweets. This approach was inspired by the framework from the paper.
 
-For detailed explanation of our code, please [check our website](https://haoyufu2.github.io/Twitter_Analysis_Website/) or read our report.
+For detailed explanation of our code, please [check our website](https://haoyufu2.github.io/Twitter_Analysis_Website/) or read our [report]().
 
 ## Files and explanations
 
@@ -48,4 +48,4 @@ The following instructions show the steps to reproduce the results of our report
 
 3. **(Optional) To replicate our reference paper**: Run all the cells from `model_replicated/demo.ipynb` in order. The results will be printed as the cell outputs.
 
-4. **(Optional) To generate simulated user tweets**: Check our previous projec: [DSC180 Quarter 1 Project](https://github.com/GeorgeZhangDS/Optimizing-Political-Analysis-Advanced-Integration-of-LangChain-with-LLMs)
+4. **(Optional) To generate simulated user tweets**: Check our previous projec: [Optimizing Political Analysis Advanced Integration of LangChain with LLMs](https://github.com/GeorgeZhangDS/Optimizing-Political-Analysis-Advanced-Integration-of-LangChain-with-LLMs)
