@@ -207,12 +207,12 @@ def run_model(file_path='data/labels.parquet', size=1000):
 
     # Save model weights with the correct file extension
 
-    trained_model.save_weights('data/weights.weights.h5')
+    trained_model.save_weights('data/weights.h5')
 
     # Load weights for evaluation
 
     prediction_model = get_model(df)  # Reinitialize model for evaluation
-    prediction_model.load_weights('data/weights.weights.h5')
+    prediction_model.load_weights('data/weights.h5')
 
     # Prepare features for prediction
 
